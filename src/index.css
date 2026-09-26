@@ -1,0 +1,378 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 41 44% 96%;
+    --foreground: 160 21% 11%;
+    --card: 41 50% 98%;
+    --card-foreground: 160 21% 11%;
+    --popover: 41 50% 98%;
+    --popover-foreground: 160 21% 11%;
+    --primary: 169 54% 19%;
+    --primary-foreground: 41 44% 96%;
+    --secondary: 38 45% 89%;
+    --secondary-foreground: 160 21% 11%;
+    --muted: 41 32% 91%;
+    --muted-foreground: 152 10% 36%;
+    --accent: 35 48% 70%;
+    --accent-foreground: 160 21% 11%;
+    --destructive: 0 72% 51%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 41 33% 83%;
+    --input: 41 33% 83%;
+    --ring: 169 54% 19%;
+    --radius: 0.75rem;
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    font-feature-settings: "kern" 1, "liga" 1, "calt" 1;
+  }
+
+  body {
+    @apply bg-nuvia-ivory text-nuvia-ink font-sans antialiased;
+    font-size: 16px;
+    line-height: 1.6;
+  }
+
+  h1, h2, h3, h4 {
+    @apply font-display;
+    line-height: 1.15;
+    letter-spacing: -0.025em;
+  }
+
+  h5, h6 {
+    @apply font-sans font-semibold;
+  }
+
+  ::selection {
+    background: rgba(215, 185, 142, 0.45);
+    color: #17231f;
+  }
+
+  ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: #faf8f2;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: #d1c4a7;
+    border-radius: 3px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: #789b7c;
+  }
+
+  :focus-visible {
+    outline: 2px solid rgba(215, 185, 142, 0.8);
+    outline-offset: 2px;
+  }
+}
+
+@layer components {
+  .nuvia-container {
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+
+  /* ── Buttons ─────────────────────────────────────────────────────── */
+  .btn-primary {
+    @apply inline-flex items-center justify-center px-6 py-3 text-nuvia-ivory font-sans font-semibold text-sm rounded-full transition-all duration-200 active:scale-[0.98] disabled:opacity-50 disabled:cursor-not-allowed;
+    background: linear-gradient(180deg, #1e5f53 0%, #174c42 100%);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.18), 0 6px 20px rgba(23, 76, 66, 0.32);
+  }
+
+  .btn-primary:hover {
+    background: linear-gradient(180deg, #174c42 0%, #0f3a32 100%);
+    transform: translateY(-1px);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.16), 0 10px 28px rgba(23, 76, 66, 0.42);
+  }
+
+  .btn-secondary {
+    @apply inline-flex items-center justify-center px-6 py-3 text-nuvia-ink font-sans font-semibold text-sm rounded-full border transition-all duration-200 active:scale-[0.98] disabled:opacity-50 disabled:cursor-not-allowed;
+    background: linear-gradient(135deg, rgba(255, 253, 248, 0.85), rgba(247, 241, 227, 0.65));
+    border-color: rgba(209, 196, 167, 0.8);
+    backdrop-filter: blur(12px) saturate(130%);
+    -webkit-backdrop-filter: blur(12px) saturate(130%);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.65), 0 2px 10px rgba(23, 35, 31, 0.05);
+  }
+
+  .btn-secondary:hover {
+    border-color: rgba(120, 155, 124, 0.7);
+    transform: translateY(-1px);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.7), 0 8px 24px rgba(23, 35, 31, 0.1);
+  }
+
+  .btn-ghost {
+    @apply inline-flex items-center justify-center px-4 py-2 text-nuvia-brown font-sans font-medium text-sm rounded-xl transition-all duration-200 hover:text-nuvia-ink active:scale-[0.98];
+  }
+
+  .btn-ghost:hover {
+    background: rgba(227, 216, 194, 0.4);
+  }
+
+  /* ── Cards ───────────────────────────────────────────────────────── */
+  .card-nuvia {
+    @apply rounded-2xl border transition-all duration-300;
+    background: linear-gradient(150deg, rgba(255, 253, 248, 0.88), rgba(250, 248, 242, 0.66));
+    border-color: rgba(209, 196, 167, 0.55);
+    backdrop-filter: blur(14px) saturate(130%);
+    -webkit-backdrop-filter: blur(14px) saturate(130%);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.6), 0 2px 10px rgba(23, 35, 31, 0.04);
+  }
+
+  .card-nuvia:hover {
+    transform: translateY(-3px);
+    border-color: rgba(120, 155, 124, 0.5);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.65), 0 16px 40px rgba(23, 35, 31, 0.1);
+  }
+
+  /* ── Inputs ──────────────────────────────────────────────────────── */
+  .input-nuvia {
+    @apply w-full px-4 py-3 rounded-xl text-nuvia-ink font-sans text-sm border transition-all duration-200 placeholder-nuvia-brown/60 focus:outline-none;
+    background: rgba(255, 253, 248, 0.72);
+    border-color: rgba(209, 196, 167, 0.7);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+  }
+
+  .input-nuvia:focus {
+    border-color: rgba(35, 107, 91, 0.55);
+    box-shadow: 0 0 0 3px rgba(215, 185, 142, 0.22);
+    background: rgba(255, 253, 248, 0.9);
+  }
+
+  .label-nuvia {
+    @apply block text-xs font-sans font-semibold text-nuvia-brown uppercase tracking-wider mb-1.5;
+  }
+
+  /* ── Typography helpers ──────────────────────────────────────────── */
+  .section-heading {
+    @apply font-display text-3xl md:text-4xl text-nuvia-ink;
+  }
+
+  .section-subheading {
+    @apply font-sans text-base md:text-lg text-nuvia-brown leading-relaxed;
+  }
+
+  .eyebrow {
+    @apply inline-flex items-center gap-2 text-xs font-sans font-semibold text-nuvia-moss uppercase tracking-[0.14em];
+  }
+
+  /* ── Badges ──────────────────────────────────────────────────────── */
+  .badge-nuvia {
+    @apply inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-sans font-medium;
+  }
+
+  .badge-nuvia-success {
+    @apply badge-nuvia border;
+    background: rgba(175, 199, 155, 0.22);
+    color: #174c42;
+    border-color: rgba(175, 199, 155, 0.6);
+  }
+
+  .badge-nuvia-warning {
+    @apply badge-nuvia border;
+    background: rgba(215, 185, 142, 0.2);
+    color: #7a5a2e;
+    border-color: rgba(215, 185, 142, 0.55);
+  }
+
+  .badge-nuvia-danger {
+    @apply badge-nuvia border;
+    background: rgba(155, 96, 69, 0.12);
+    color: #9a6045;
+    border-color: rgba(154, 96, 69, 0.4);
+  }
+
+  .badge-nuvia-info {
+    @apply badge-nuvia border;
+    background: rgba(120, 155, 124, 0.14);
+    color: #236b5b;
+    border-color: rgba(120, 155, 124, 0.45);
+  }
+
+  .badge-nuvia-neutral {
+    @apply badge-nuvia border;
+    background: rgba(244, 237, 220, 0.8);
+    color: #52645b;
+    border-color: rgba(209, 196, 167, 0.6);
+  }
+
+  .divider-nuvia {
+    @apply border-t border-nuvia-surface;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  .gradient-mask-b {
+    mask-image: linear-gradient(to bottom, black 60%, transparent 100%);
+  }
+
+  /* ── TRUE GLASS SYSTEM ─────────────────────────────────────────────
+     Glass = layered translucency: blurred backdrop + tinted gradient
+     fill + 1px light border + inset top highlight + diagonal light
+     refraction + soft depth shadow. Varying intensities per surface. */
+
+  /* Frosted light glass — default surface over imagery or tinted bg */
+  .glass {
+    background:
+      linear-gradient(120deg, rgba(255, 255, 255, 0.30) 0%, rgba(255, 255, 255, 0.06) 38%, rgba(255, 255, 255, 0.10) 100%),
+      linear-gradient(180deg, rgba(250, 248, 242, 0.62), rgba(244, 237, 220, 0.42));
+    backdrop-filter: blur(18px) saturate(140%);
+    -webkit-backdrop-filter: blur(18px) saturate(140%);
+    border: 1px solid rgba(255, 255, 255, 0.55);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.55), 0 8px 32px rgba(23, 35, 31, 0.10);
+  }
+
+  /* Clear/near-invisible glass — subtle overlays on imagery */
+  .glass-clear {
+    background: linear-gradient(120deg, rgba(255, 255, 255, 0.16) 0%, rgba(255, 255, 255, 0.04) 50%, rgba(255, 255, 255, 0.10) 100%);
+    backdrop-filter: blur(10px) saturate(130%);
+    -webkit-backdrop-filter: blur(10px) saturate(130%);
+    border: 1px solid rgba(255, 255, 255, 0.28);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.25);
+  }
+
+  /* Solid frosted panel — navbars, drawers, modals on light pages */
+  .glass-strong {
+    background:
+      linear-gradient(120deg, rgba(255, 255, 255, 0.42) 0%, rgba(255, 255, 255, 0.10) 45%, rgba(255, 255, 255, 0.16) 100%),
+      linear-gradient(180deg, rgba(255, 253, 248, 0.92), rgba(247, 241, 227, 0.88));
+    backdrop-filter: blur(24px) saturate(150%);
+    -webkit-backdrop-filter: blur(24px) saturate(150%);
+    border: 1px solid rgba(255, 255, 255, 0.65);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.7), 0 12px 40px rgba(23, 35, 31, 0.12);
+  }
+
+  /* Forest/ink tinted glass — for dark sections */
+  .glass-dark {
+    background:
+      linear-gradient(120deg, rgba(255, 255, 255, 0.07) 0%, rgba(255, 255, 255, 0.015) 45%, rgba(215, 185, 142, 0.05) 100%),
+      linear-gradient(160deg, rgba(23, 76, 66, 0.55), rgba(23, 35, 31, 0.62));
+    backdrop-filter: blur(20px) saturate(130%);
+    -webkit-backdrop-filter: blur(20px) saturate(130%);
+    border: 1px solid rgba(215, 185, 142, 0.16);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08), 0 16px 48px rgba(0, 0, 0, 0.28);
+  }
+
+  /* Floating glass chip — small labels, stats, badges over imagery */
+  .glass-chip {
+    background: linear-gradient(120deg, rgba(255, 255, 255, 0.34) 0%, rgba(255, 255, 255, 0.12) 100%);
+    backdrop-filter: blur(14px) saturate(140%);
+    -webkit-backdrop-filter: blur(14px) saturate(140%);
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.4), 0 4px 16px rgba(23, 35, 31, 0.10);
+  }
+
+  /* Glass image frame — rounds imagery and adds a glass bezel */
+  .glass-frame {
+    position: relative;
+    border-radius: 1.25rem;
+    padding: 0.5rem;
+    background: linear-gradient(120deg, rgba(255, 255, 255, 0.42) 0%, rgba(255, 255, 255, 0.10) 50%, rgba(255, 255, 255, 0.22) 100%);
+    backdrop-filter: blur(18px) saturate(140%);
+    -webkit-backdrop-filter: blur(18px) saturate(140%);
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.55), 0 24px 64px rgba(11, 19, 16, 0.22);
+  }
+
+  .glass-frame > img,
+  .glass-frame > .glass-frame-content {
+    border-radius: 0.9rem;
+  }
+
+  /* Champagne accent text */
+  .text-champagne-gradient {
+    background: linear-gradient(115deg, #d7b98e 0%, #ebdcc0 45%, #b98f56 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  /* Diagonal light streak overlay for glass surfaces (apply ::after via class) */
+  .light-streak {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .light-streak::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(115deg, transparent 20%, rgba(255, 255, 255, 0.14) 42%, transparent 58%);
+    pointer-events: none;
+  }
+
+  /* Soft grain to prevent banding on large soft-gradient areas */
+  .bg-grain {
+    background-image: radial-gradient(rgba(23, 35, 31, 0.045) 1px, transparent 1px);
+    background-size: 22px 22px;
+  }
+
+  /* Perspective helpers */
+  .perspective-1200 {
+    perspective: 1200px;
+  }
+
+  .preserve-3d {
+    transform-style: preserve-3d;
+  }
+
+  .browser-chrome {
+    background: linear-gradient(to bottom, rgba(244, 237, 220, 0.92), rgba(227, 216, 194, 0.85));
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+  }
+
+  /* Prevent horizontal overflow on mobile */
+  .overflow-x-safe {
+    overflow-x: hidden;
+    max-width: 100vw;
+  }
+}
+
+/* Global overflow fix */
+html, body {
+  overflow-x: hidden;
+  max-width: 100%;
+}
+
+/* Prevent images from breaking layout */
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Improve tap target feedback */
+@media (max-width: 768px) {
+  button, a {
+    -webkit-tap-highlight-color: rgba(120, 155, 124, 0.15);
+  }
+}
+
+/* Respect reduced-motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
